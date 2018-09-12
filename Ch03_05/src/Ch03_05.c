@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : Ch03_6.c
- Author      : 
+ Name        : Ch03_5.c
+ Author      : Vagacoder
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : ex 3.5
  ============================================================================
  */
 
