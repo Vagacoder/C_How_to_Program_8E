@@ -14,7 +14,7 @@ int main(void) {
 	int num1 = 14;
 
 	// 1, if-else
-	if (num1 %7 == 0){
+	if (num1 % 7 == 0) {
 		printf("%d is divisible by 7.", num1);
 	} else {
 		printf("%d is not divisible by 7.", num1);
@@ -22,8 +22,12 @@ int main(void) {
 
 	puts("");
 
-	// 2, ternary condtional operator
-	printf("%d is %sdivisible by 7.", num1, num1 %7 ==0? "":"not ");
+	// 2, ternary conditional operator
+	printf("%d is %sdivisible by 7.", num1, (num1 % 7 == 0) ? "" : "not ");
+
+	// 3, not correct
+	// printf("%d is %sdivisible by 7.", (num%7 == 0) ? (num1, "") : (num1 "not "));
+
 	return EXIT_SUCCESS;
 }
 
