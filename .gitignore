@@ -4,6 +4,7 @@
 */.project
 */Debug/
 */.gitignore
-
+*.stackdump
+.vscode/
 RemoteSystemsTempFiles
 /
