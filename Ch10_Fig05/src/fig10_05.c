@@ -1,35 +1,34 @@
-// Fig. 11.10: fig11_10.c
-// Creating a random-access file sequentially
+// Fig. 10.5: fig10_05.c
+// Displaying the value of a union in both member data types
 #include <stdio.h>
 
-// clientData structure definition            
-struct clientData {
-	unsigned int acctNum; // account number
-	char lastName[15]; // account last name
-	char firstName[10]; // account first name
-	double balance; // account balance
-};
+// number union definition
+union number {               
+   int x;                    
+   double y;                 
+}; 
 
-int main(void) {
-	setvbuf(stdout, NULL, _IONBF,0);
-	FILE *cfPtr; // accounts.dat file pointer
+int main(void)
+{ 
+   union number value; // define union variable
+   
+   value.x = 100; // put an integer into the union
+   printf("%s\n%s\n%s\n  %d\n\n%s\n  %f\n\n\n",
+      "Put 100 in the integer member", 
+      "and print both members.",
+      "int:", value.x, 
+      "double:", value.y);
+   
+   value.y = 100.0; // put a double into the same union
+   printf("%s\n%s\n%s\n  %d\n\n%s\n  %f\n",
+      "Put 100.0 in the floating member",
+      "and print both members.",
+      "int:", value.x, 
+      "double:", value.y);
+} 
 
-	// fopen opens the file; exits if file cannot be opened
-	if ((cfPtr = fopen("account.dat", "wb")) == NULL) {
-		puts("File could not be opened.");
-	} else {
-		// create clientData with default information
-		struct clientData blankClient = { 0, "", "", 0.0 };
 
-		// output 100 blank records to file
-		unsigned int i;
-		for (i = 1; i <= 100; ++i) {
-			fwrite(&blankClient, sizeof(struct clientData), 1, cfPtr);
-		}
 
-		fclose(cfPtr); // fclose closes the file
-	}
-}
 
 /**************************************************************************
  * (C) Copyright 1992-2015 by Deitel & Associates, Inc. and               *

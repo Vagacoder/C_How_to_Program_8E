@@ -4,6 +4,7 @@
 
 // function main begins program execution
 int main(void) {
+	setvbuf(stdout, NULL, _IONBF,0);
 	FILE *cfPtr; // clients.txt file pointer
 
 	// fopen opens the file; exits program if file cannot be opened

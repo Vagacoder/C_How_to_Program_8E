@@ -1,35 +1,32 @@
-// Fig. 11.10: fig11_10.c
-// Creating a random-access file sequentially
+// Fig. 10.2: fig10_02.c
+// Structure member operator and 
+// structure pointer operator
 #include <stdio.h>
 
-// clientData structure definition            
-struct clientData {
-	unsigned int acctNum; // account number
-	char lastName[15]; // account last name
-	char firstName[10]; // account first name
-	double balance; // account balance
-};
+// card structure definition            
+struct card {                           
+   char *face; // define pointer face   
+   char *suit; // define pointer suit   
+}; 
 
-int main(void) {
-	setvbuf(stdout, NULL, _IONBF,0);
-	FILE *cfPtr; // accounts.dat file pointer
+int main(void)
+{ 
+   struct card aCard; // define one struct card variable   
 
-	// fopen opens the file; exits if file cannot be opened
-	if ((cfPtr = fopen("account.dat", "wb")) == NULL) {
-		puts("File could not be opened.");
-	} else {
-		// create clientData with default information
-		struct clientData blankClient = { 0, "", "", 0.0 };
+   // place strings into aCard
+   aCard.face = "Ace";   
+   aCard.suit = "Spades";
 
-		// output 100 blank records to file
-		unsigned int i;
-		for (i = 1; i <= 100; ++i) {
-			fwrite(&blankClient, sizeof(struct clientData), 1, cfPtr);
-		}
+   struct card *cardPtr = &aCard; // assign address of aCard to cardPtr
 
-		fclose(cfPtr); // fclose closes the file
-	}
-}
+   printf("%s%s%s\n%s%s%s\n%s%s%s\n", aCard.face, " of ", aCard.suit,
+      cardPtr->face, " of ", cardPtr->suit,                           
+      (*cardPtr).face, " of ", (*cardPtr).suit);                 
+} 
+
+
+
+
 
 /**************************************************************************
  * (C) Copyright 1992-2015 by Deitel & Associates, Inc. and               *
