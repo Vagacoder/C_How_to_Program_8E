@@ -24,7 +24,14 @@ int main(void) {
 	puts("Suit values 0-3 correspond Hearts, Diamonds, Clubs and Spades");
 	puts("Color values 0-1 correspond to red and black\n");
 	deal(deck);
-	printf("deck address is %p", &deck);
+	printf("deck address is %p\n", &deck);
+	printf("deck 1 address is %p\n", &deck[1]);
+	printf("deck 1 value is %d\n", deck[1]);
+	printf("deck 37 value is %d\n", deck[37]);
+	printf("deck 38 value is %d\n", deck[38]);
+	printf("deck 39 value is %d\n", deck[39]);
+	printf("deck 40 value is %d\n", deck[40]);
+
 }
 
 // initialize Cards
