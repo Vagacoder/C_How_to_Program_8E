@@ -23,6 +23,7 @@ void postOrder(TreeNodePtr treePtr);
 
 // function main begins program execution
 int main(void) {
+	setvbuf(stdout, NULL, _IONBF,0);
 	TreeNodePtr rootPtr = NULL; // tree initially empty
 
 	srand(time(NULL));
