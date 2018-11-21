@@ -15,12 +15,22 @@ int main(void) {
 
 		printf("%-10s%-13s%s\n", "Account", "Name", "Balance");
 		fscanf(cfPtr, "%d%29s%lf", &account, name, &balance);
-
+		printf("%d\n", feof(cfPtr));
+		printf("%d\n", ferror(cfPtr));
 		// while not end of file
 		while (!feof(cfPtr)) {
+			printf("%d\n", feof(cfPtr));
 			printf("%-10d%-13s%7.2f\n", account, name, balance);
 			fscanf(cfPtr, "%d%29s%lf", &account, name, &balance);
 		}
+//		printf("%d\n", feof(cfPtr));
+//		printf("%d, %s, %f\n", account, name, balance);
+//		fscanf(cfPtr, "%d%29s%lf", &account, name, &balance);
+//		printf("%d\n", feof(cfPtr));
+//		printf("%d, %s, %f\n", account, name, balance);
+//		fscanf(cfPtr, "%d%29s%lf", &account, name, &balance);
+//		printf("%d\n", feof(cfPtr));
+//		printf("%d, %s, %f\n", account, name, balance);
 
 		fclose(cfPtr); // fclose closes the file
 	}
