@@ -32,6 +32,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(void) {
 	char buffer[100];
@@ -41,6 +42,8 @@ int main(void) {
 		puts("File could not be opened");
 	} else {
 
+		// Here is testing fscanf()
+		puts("Testing fscanf()...");
 		// traditional while loop for reading file
 		// will lose the last line
 		fscanf(inFile, "%s", buffer);
@@ -67,6 +70,24 @@ int main(void) {
 		puts("");
 
 		int count = 0;
+
+		while (1) {
+			int readNumber = fscanf(inFile, "%s", buffer);
+			printf("read number %d\n", readNumber);
+			if (readNumber <= 0) {
+				break;
+			}
+			++count;
+			printf("%s\n", buffer);
+		}
+		printf("total line is %d\n", count);
+
+		rewind(inFile);
+		puts("");
+
+		// Here is testing fgetc()
+		puts("Testing fgetc()...");
+		count = 0;
 		while (1) {
 			int c = fgetc(inFile);
 			if (feof(inFile)) {
@@ -75,11 +96,14 @@ int main(void) {
 			++count;
 			printf("%c", c);
 		}
+		puts("");
 		printf("total char is %d\n", count);
 
 		rewind(inFile);
 		puts("");
 
+		// Here is testing fgets()
+		puts("Testing fgets()...");
 		count = 0;
 		while (1) {
 			char* line;
@@ -96,15 +120,44 @@ int main(void) {
 		puts("");
 
 		count = 0;
-		while (1) {
-			int readNumber = fscanf(inFile, "%s", buffer);
-			printf("read number %d\n", readNumber);
-			if (readNumber <= 0) {
+		while (!feof(inFile)) {
+			char* line;
+			line = fgets(buffer, 100, inFile);
+			++count;
+			printf("%s", line);
+		}
+		puts("");
+		printf("total line is %d\n", count);
+
+		rewind(inFile);
+		puts("");
+
+		count = 0;
+		while (!feof(inFile)) {
+			char* line;
+			line = fgets(buffer, 100, inFile);
+			if (line == NULL) {
 				break;
 			}
 			++count;
-			printf("%s\n", buffer);
+			printf("%s", line);
 		}
+		puts("");
+		printf("total line is %d\n", count);
+
+		rewind(inFile);
+		puts("");
+
+		count = 0;
+		while (!feof(inFile)) {
+			fgets(buffer, 100, inFile);
+			if (feof(inFile) && buffer[strlen(buffer) - 1] == '\n') {
+				break;
+			}
+			++count;
+			printf("%s", buffer);
+		}
+		puts("");
 		printf("total line is %d\n", count);
 	}
 
