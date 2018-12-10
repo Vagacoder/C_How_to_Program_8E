@@ -32,6 +32,8 @@ int main(void) {
 	printf("Outside function, After, pointer location is %c\n", *ptr2);
 	// printf("Outside function, After and ++, pointer location is %c\n", (*ptr2++));
 
+	printf("Outside function, After, and +1 pointer location is %c\n", *(ptr2+1));
+
 	return EXIT_SUCCESS;
 }
 
